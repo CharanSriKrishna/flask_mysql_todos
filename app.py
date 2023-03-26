@@ -7,23 +7,23 @@ import Fetchusers as fu
 app = Flask(__name__, template_folder="templates")
 app.secret_key = "super secret key"
 
-#con = fu.connection()
-#cursor = con.cursor(dictionary=True)
+con = fu.connection()
+cursor = con.cursor(dictionary=True)
 
 
 @app.route("/")
 @app.route("/login", methods=["GET", "POST"])
 def login():
-  #if request.method == "POST":
-  #  user, password = request.form["username"], request.form["password"]
-    #if (fu.verify(cursor, user, password)):
-    #  id = fu.getId(cursor, user)
-    #  session['loggedin'] = True
-    #  session['username'] = id
-    #  return redirect(url_for("home"))
-    #else:
-    #  return redirect(url_for("login"))
-  #else:
+  if request.method == "POST":
+    user, password = request.form["username"], request.form["password"]
+    if (fu.verify(cursor, user, password)):
+      id = fu.getId(cursor, user)
+      session['loggedin'] = True
+      session['username'] = id
+      return redirect(url_for("home"))
+    else:
+      return redirect(url_for("login"))
+  else:
     return render_template("login.html")
 
 
