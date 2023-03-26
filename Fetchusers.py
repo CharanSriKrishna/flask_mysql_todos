@@ -7,7 +7,7 @@ def connection():
     host='ap-south.connect.psdb.cloud',
     password='pscale_pw_V3ExLmyM5XA0PBYeUFcVYndD6NfkipdNfEqEVSOa6er',
     database='todo',
-    ssl_ca='/etc/ssl/cert.pem')
+    ssl_ca='./cacert.pem')
   return con
 
 
